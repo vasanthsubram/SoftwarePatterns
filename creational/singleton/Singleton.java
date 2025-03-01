@@ -1,7 +1,6 @@
 package patterns.creational.singleton;
 
-import static org.junit.Assert.assertTrue;
-
+import static org.junit.jupiter.api.Assertions.assertTrue;
 /**
  * Simple way to create Singleton
  * Create the lone instance when the class loads
