@@ -1,6 +1,7 @@
 package patterns.behavioural.interpreter;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import patterns.behavioural.interpreter.ruleExpressions.AndExpression;
 import patterns.behavioural.interpreter.ruleExpressions.AttributeExpression;
 import patterns.behavioural.interpreter.ruleExpressions.EqualsExpression;
