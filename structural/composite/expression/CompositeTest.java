@@ -1,8 +1,8 @@
 package patterns.structural.composite.expression;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Created by Milan.Nikic on 8/23/2016.
