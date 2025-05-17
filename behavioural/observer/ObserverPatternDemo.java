@@ -1,34 +1,72 @@
 package patterns.behavioural.observer;
 
-import java.util.Observable;
-import java.util.Observer;
+import java.util.*;
+
+// Observer.java
+ interface Observer {
+	void update(float temperature, float humidity);
+}
+
+// Subject.java
+ interface Subject {
+	void registerObserver(Observer o);
+	void removeObserver(Observer o);
+	void notifyObservers();
+}
+
+ class WeatherStation implements Subject {
+	private List<Observer> observers = new ArrayList<>();
+	private float temperature;
+	private float humidity;
+
+	@Override
+	public void registerObserver(Observer o) {
+		observers.add(o);
+	}
+
+	@Override
+	public void removeObserver(Observer o) {
+		observers.remove(o);
+	}
+
+	@Override
+	public void notifyObservers() {
+		for (Observer o : observers) {
+			o.update(temperature, humidity);
+		}
+	}
+
+	public void setMeasurements(float temp, float humidity) {
+		this.temperature = temp;
+		this.humidity = humidity;
+		notifyObservers();
+	}
+}
+
+ class Display implements Observer {
+	private float temperature;
+	private float humidity;
+
+	@Override
+	public void update(float temperature, float humidity) {
+		this.temperature = temperature;
+		this.humidity = humidity;
+		display();
+	}
+
+	public void display() {
+		System.out.println("Current conditions: " + temperature + "C and " + humidity + "% humidity");
+	}
+}
+//=============
 
 public class ObserverPatternDemo {
-
 	public static void main(String[] args) {
-		Subject subject = new Subject();
-		View view = new View();
+		WeatherStation station = new WeatherStation();
+		Display display = new Display();
 
-		subject.addObserver(view);
-		// calling setValue on the subject
-		// will trigger an update call to the view
-		subject.setValue("test value");
-	}
-
-	static class Subject extends Observable {
-		private String value;
-
-		public void setValue(String s) {
-			value = s;
-			setChanged(); // set changed flag
-			System.out.println("value changed in observer " + value);
-			notifyObservers(value); // do notification
-		}
-	}
-
-	static class View implements Observer {
-		public void update(Observable o, Object str) {
-			System.out.println("update recieved in observer : " + str.toString());
-		}
+		station.registerObserver(display);
+		station.setMeasurements(25.0f, 60.0f);
+		station.setMeasurements(26.5f, 55.0f);
 	}
 }

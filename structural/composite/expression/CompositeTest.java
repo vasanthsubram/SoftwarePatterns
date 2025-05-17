@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * Created by Milan.Nikic on 8/23/2016.
  */
+
 public class CompositeTest {
 
     @Test

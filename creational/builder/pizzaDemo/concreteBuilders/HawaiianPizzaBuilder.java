@@ -7,7 +7,7 @@ import patterns.creational.builder.pizzaDemo.PizzaBuilder;
 public class HawaiianPizzaBuilder extends PizzaBuilder {
 
 	public void buildDough() {
-		pizza.setDough("cross");
+		pizza.setDough("thick crust");
 	}
 
 	public void buildSauce() {

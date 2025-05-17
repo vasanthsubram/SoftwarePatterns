@@ -5,7 +5,7 @@ import patterns.creational.builder.pizzaDemo.PizzaBuilder;
 public class PestoPizzaBuilder extends PizzaBuilder {
 
   public void buildDough() {
-    pizza.setDough("cross");
+    pizza.setDough("thin crust");
   }
 
   public void buildSauce() {

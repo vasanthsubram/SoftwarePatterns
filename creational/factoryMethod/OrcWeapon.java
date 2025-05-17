@@ -1,5 +1,7 @@
 package patterns.creational.factoryMethod;
 
+import java.util.Calendar;
+
 public class OrcWeapon implements Weapon {
 
   private WeaponType weaponType;
